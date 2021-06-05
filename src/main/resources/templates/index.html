@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>首页</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gato Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script th:src="@{/js/jquery.min.js}"> </script>
+
+</head>
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="#" ><h1>宠物<span>之家</span></h1></a>
+
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+					<nav>
+						<li><a class="active" th:href="@{/index}">首页</a></li>
+						<li><a  th:href="@{/about}">店铺简介</a></li>
+						<li><a th:href="@{/portfolio}">宠物商城</a></li>
+						<li><a  th:href="@{/blog}">宠物论坛</a></li>
+						<li><a  th:href="@{/myblog}" th:text="${session.name}">我的</a></li>
+
+
+
+
+
+
+
+
+					</nav>
+					</ul>
+				</div>
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+	<div class="banner">
+		<div class="container">	
+		<ul id="flexiselDemo3">
+				<li>
+					<div class="biseller-column">
+					<a class="lightbox" href="#goofy">
+								   <img src="../static/images/狗狗1.jpg.jpg" th:src="@{/images/狗狗1.jpg}"/>
+								</a> 
+								<div class="lightbox-target" id="goofy">
+									  <img  th:src="@{../static/images/狗狗1.jpg}"/>
+								   <a class="lightbox-close" href="#"> </a>
+
+									<div class="clearfix"> </div>
+								</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+					<a class="lightbox" href="#goofy">
+								  <img src="../static/images/纯种德文卷猫.jpg" th:src="@{/images/纯种德文卷猫.jpg}"/>
+								</a> 
+								<div class="lightbox-target" id="goofy">
+									  <img th:src="@{/images/纯种德文卷猫.jpg}"/>
+								   <a class="lightbox-close" href="#"> </a>
+
+									<div class="clearfix"> </div>
+								</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+					<a class="lightbox" href="#goofy">
+								  <img src="../static/images/狗狗2.jpg"/>
+								</a> 
+								<div class="lightbox-target" id="goofy">
+									  <img src="../static/images/狗狗2.jpg" >
+								   <a class="lightbox-close" href="#"> </a>
+
+									<div class="clearfix"> </div>
+								</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+					<a class="lightbox" href="#goofy">
+								    <img src="../static/images/折耳猫.jpg" th:src="@{/images/折耳猫.jpg}"/>
+								</a> 
+								<div class="lightbox-target" id="goofy">
+									<img src="../static/images/折耳猫.jpg" th:src="@{/images/折耳猫.jpg}"/>
+								   <a class="lightbox-close" href="#"> </a>
+
+									<div class="clearfix"> </div>
+								</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+					<a class="lightbox" href="#goofy">
+								  <img src="../static/images/短毛猫.jpg" th:src="@{/images/短毛猫.jpg}"/>
+								</a> 
+								<div class="lightbox-target" id="goofy">
+									  <img src="../static/images/短毛猫.jpg" th:src="@{/images/短毛猫.jpg}"/>
+								   <a class="lightbox-close" href="#"> </a>
+
+									<div class="clearfix"> </div>
+								</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+					<a class="lightbox" href="#goofy">
+								   <img src="../static/images/狗狗3.jpg" th:src="@{/images/狗狗3.jpg}"/>
+								</a> 
+								<div class="lightbox-target" id="#goofy">
+									<img src="../static/images/狗狗3.jpg" th:src="@{/images/狗狗3.jpg}"/>
+								   <a class="lightbox-close" href="#"> </a>
+
+									<div class="clearfix"> </div>
+								</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+								<a class="lightbox" href="#goofy">
+								    <img src="../static/images/英国短尾猫银渐层.jpg" th:src="@{/images/英国短尾猫银渐层.jpg}"/>
+								</a> 
+								<div class="lightbox-target" id="#goofy">
+									<img src="../static/images/英国短尾猫银渐层.jpg" th:src="@{/images/英国短尾猫银渐层.jpg}"/>
+								   <a class="lightbox-close" href="#"> </a>
+									
+									<div class="clearfix"> </div>
+								</div>
+					</div>
+				</li>
+	     	</ul>
+			</div>
+			<script type="text/javascript">
+				 $(window).load(function() {
+					$("#flexiselDemo3").flexisel({
+						visibleItems:3,
+						animationSpeed: 1000,
+						autoPlay: true,
+						autoPlaySpeed: 3000,    		
+						pauseOnHover: true,
+						enableResponsiveBreakpoints: true,
+				    	responsiveBreakpoints: { 
+				    		portrait: { 
+				    			changePoint:480,
+				    			visibleItems:3
+				    		}, 
+				    		landscape: { 
+				    			changePoint:640,
+				    			visibleItems:3
+				    		},
+				    		tablet: { 
+				    			changePoint:768,
+				    			visibleItems:3
+				    		}
+				    	}
+				    });
+				    
+				});
+			   </script>
+			   <script type="text/javascript" src="../static/js/jquery.flexisel.js" th:src="@{/js/jquery.flexisel.js}"></script>
+			</div>   
+		</div>
+	<!--about-->
+	<div class="about">
+		<div class="container">
+				<div class="about-head">
+				   <h3>猫咪专属</h3>
+				   <p>你是不是还在烦恼不知道养什么猫咪合适？没关系我们帮你智能匹配跟你合适的猫咪，让你不再为选择猫咪犯难</p>
+			  	</div>	
+				<div class="cat-info-section">
+					<div class="cat-info-left">
+						<img src="../static/images/cat.jpg" th:src="@{/images/cat.jpg}" alt="" />
+					</div>
+					<div class="cat-info-middle">
+						<h4>温柔</h4>
+					</div>
+					<div class="cat-info-right">
+						<h3>英国短尾猫</h3>
+						<p>英国短毛猫，体形圆胖，四肢粗短发达，被毛短而密，头大脸圆，温柔平静，对人友善，极易饲养。英国短毛猫性格大胆好奇，但非常温柔，适应能力也很强，不会因为环境的改变而改变，也不会乱发脾气、更不会乱吵乱叫，它只会尽量爬到比较高的地方，低着头瞪着那双圆圆的大眼睛面带微笑地俯视着你，就好像《爱丽丝梦游仙境》中提到的那只叫做“路易斯”的猫一样，不用语言，只用那可爱的面部表情就抓住了你的心，再也无法改变你对它的爱。 </p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	<!--//about-->
+	<!--gallery-->
+	<div class="gallery">
+		<div class="container">
+				<div class="gallery-head">
+				   <h3>宠物之家</h3>
+				   <p>我们致力于热爱宠物家族，用心照顾它们，给它们一个温暖的家，给他们满满的爱爱爱爱爱爱爱爱爱</p>
+			  	</div>	
+			<div class="portfolio-bottom">
+				<div class="gallery-one">
+					<div class="col-md-3 gallery-left">
+						<a href="../static/images/g1.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+								<img src="../static/images/g1.jpg" th:src="@{/images/g1.jpg}" alt="" class="img-responsive zoom-img"/>
+						</a>
+					</div>
+					<div class="col-md-3 gallery-left">
+						<a href="../static/images/g2.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+								<img src="../static/images/g2.jpg"  th:src="@{/images/g2.jpg}" alt="" class="img-responsive zoom-img"/>
+						</a>
+					</div>
+					<div class="col-md-3 gallery-left">
+						<a href="../static/images/g4.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+								<img src="../static/images/狗狗4.jpg"  th:src="@{/images/狗狗4.jpg}" alt="" class="img-responsive zoom-img"/>
+						</a>
+					</div>
+					<div class="col-md-3 gallery-left">
+						<a href="../static/images/g3.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+								<img src="../static/images/狗狗5.jpg" th:src="@{/images/狗狗5.jpg}" alt="" class="img-responsive zoom-img"/>
+						</a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--swipebox -->	
+			<link rel="stylesheet" href="../static/css/swipebox.css" th:href="@{/css/swipebox.css}">
+				<script src="../static/js/jquery.swipebox.min.js" th:src="@{/js/jquery.swipebox.min.js}"></script>
+				<script type="text/javascript">
+					jQuery(function($) {
+						$(".swipebox").swipebox();
+					});
+				</script>
+			<!--//swipebox Ends -->
+<!--/start-footer-->
+
+	<!--/adoption-->
+	<!--/blog-->
+		<div id="blog" class="blog">	
+				<div class="blog-head">
+				   <h3>猫咪论坛</h3>
+				   <p>晒出你的猫咪，晒出你对它的爱吧！</p>
+			  	</div>			
+			<div class="blog-grids">	
+				<div class="col-md-5 blog-grid-info">
+					<img src="../static/images/2.jpg" th:src="@{/images/2.jpg}" alt=""/>
+				</div>
+				<div class="col-md-3 blog-grid-info">
+					<div class="blog-grid-text">
+						<a href="boke.html"><h3>我和路易斯的故事</h3></a>
+						<p>路易斯你很可爱，也很活泼</p>
+						<p>你给我的生活带来了无数的快乐</p>
+						<a class="read" href="boke.html" th:href="@{/blog}">进入</a>
+					</div>
+				</div>	
+				<div class="col-md-4 blog-grid-info">
+					<img src="../static/images/3.jpg" th:src="@{/images/3.jpg}" alt=""/>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="blog-grids">	
+				<div class="col-md-5 blog-grid-info">
+					<div class="blog-grid-text blg-text-two">
+						<a href="boke.html"><h3>“讨厌”的小莎</h3></a>
+						<p>今天你又把我的鞋带咬烂了</p>
+						<p>好想好想把你.....</p>
+						<a class="read" href="boke.html" th:href="@{blog}">进入</a>
+					</div>
+				</div>
+				<div class="col-md-3 blog-grid-info">
+					<img src="../static/images/5.jpg" th:src="@{/images/5.jpg}" alt=""/>
+				</div>
+				<div class="col-md-4 blog-grid-info">
+					<div class="blog-grid-text blg-text-three">
+						<a href="boke.html"><h3>调皮的小坏蛋</h3></a>
+						<p>啊啊啊啊啊啊啊</p>
+						<p>我的口红，面膜，怎么被你弄坏了</p>
+						<a class="read" href="boke.html" th:href="@{/blog}">进入</a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+	</div>	
+</div>	
+<!----family--->
+	<div class="c-family">
+		<div class="container">
+		       <div class="family-top">
+			    <h3>猫咪之家!!</h3>
+				   <p>这是一个温暖的家，这是一个属于你们的家</p>
+				   <a class="read two" href="#">进入</a>
+			   </div>
+		</div>
+	</div>
+<!---- footer --->
+    <div class="footer text-center">
+        <div class="container">
+            <div class="footer-grids">
+                <div class="col-md-6 footer-text">
+                    <h3>店铺招聘</h3>
+                    <p>宠物护养员：3000</p>
+                    <p>店长：5000</p>
+                    <a class="read" href="boke.html">报名</a>
+                </div>
+                <div class="col-md-6 footer-info">
+                    <h3>联系我们</h3>
+                    <p>联系电话：15811642565(微信同号) </p>
+                    <div class="support">
+                        <input type="text" class="text" value="Enter email..." onfocus="this.value = '';" onblur="if (this.value == 'Enter email...') {this.value = 'Enter email...';}">
+                        <input type="submit" value="SUBSCRIBE" class="botton">
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+			<!--start-smoth-scrolling-->
+			<script type="text/javascript">
+								jQuery(document).ready(function($) {
+									$(".scroll").click(function(event){		
+										event.preventDefault();
+										$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+									});
+								});
+								</script>
+							<!--start-smoth-scrolling-->
+						<script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+		<a href="#home" id="toTop" class="scroll" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+
+</body>
+</html>

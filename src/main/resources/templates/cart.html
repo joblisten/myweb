@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>购物车</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gato Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script th:src="@{/js/jquery.min.js}"> </script>
+
+
+	<!--Style-->
+	<link rel="stylesheet" th:href="@{/css/pcss/bootstrap.css}">
+	<link rel="stylesheet" th:href="@{/css/pcss/fonts.css}">
+	<link rel="stylesheet" th:href="@{/css/pcss/style.css}">
+
+	<!--Color Switcher Mockup-->
+	<link rel="stylesheet" th:href="@{/css/pcss/color-default.css}">
+	<link rel="stylesheet" th:href="@{/css/pcss/color-switcher.css}">
+
+
+
+
+
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><h1>宠物<span>之家</span></h1></a>
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+					<nav>
+						<li><a href="index.html" th:href="@{/index}">首页</a></li>
+						<li><a href="about.html" th:href="@{/portfolio}">宠物商城</a></li>
+						<li><a href="portfolio.html" th:href="@{/cart}" class="active">购物车</a></li>
+						<li><a href="index.html" th:href="@{/order}">订单管理</a></li>
+						<li><a href="contact.html" th:href="@{/myblog}">我的</a></li>
+					</nav>
+					</ul>
+				</div>
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+		<div class="banner two">
+			<div class="container">
+				<div class="pag-nav">
+					<ul class="p-list">
+						<li><a href="index.html" th:href="@{/index}">首页</a></li> &nbsp;&nbsp;/&nbsp;
+						<li class="act">&nbsp; 购物车</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Shopping Cart-->
+	<section class="section section-md bg-default">
+		<div class="container">
+			<!-- shopping-cart-->
+			<div class="table-custom-responsive">
+				<table class="table-custom table-cart">
+					<thead>
+					<tr>
+
+						<th>宠物名字</th>
+						<th>价格</th>
+						<th>数量</th>
+						<th>总价</th>
+						<th>CHANGE</th>
+						<th>DELETE</th>
+						<th>BUY</th>
+
+					</tr>
+					</thead>
+					<tbody th:each="cart:${carts}">
+					<tr>
+						<td><a class="table-cart-figure" th:href="${cart.getUrl()}"><img th:src="${cart.getUrl()}"  alt="" width="146" height="132"/></a><a class="table-cart-link" id="pname" th:text="${cart.getPname()}"></a></td>
+						<td th:text="${cart.getPrice()}" id="price" >$13.00</td>
+						<td>
+							<div class="table-cart-stepper">
+								<input class="form-input" type="number" data-zeros="true" id="num"  th:value="${cart.getNum()}" min="1" max="1000">
+							</div>
+						</td>
+						<td th:text="${cart.getTotal()}"></td>
+						<td><button class="button button-lg button-primary button-zakaria"  th:onclick="'javascript:chan('+${cart.getId()}+''+','+''+${cart.getPrice()}+')' ">修改</button></td>
+						<td><button class="button button-lg button-primary button-zakaria" th:onclick="'javascript:dele('+${cart.getId()}+')' ">删除</button></td>
+						<td><a th:href="@{/buy(id=${cart.getId()})}"><button class="button button-lg button-primary button-zakaria" type="submit" >支付</button></a></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="form-wrap" th:style="'backgroud:#FFA500'"  >
+				<nav >
+					<a th:href="@{/cart}" >首页</a>
+					<a th:href="@{/cart(pageNum=${pagein.hasPreviousPage}?${pagein.prePage}:1)}"  >上一页</a><!-- 是否有上一页：有回到上一页，没有回到首页 -->
+					<a th:href="@{/cart(pageNum=2)}">2</a>
+					<a th:href="@{/cart(pageNum=3)}" >3</a>
+					<a th:href="@{/cart(pageNum=4)}">4</a>
+					<a th:href="@{/cart(pageNum=5)}">5</a>
+					<a th:href="@{/cart(pageNum=${pagein.hasNextPage}?${pagein.nextPage}:${pagein.pages})}" >下一页</a>
+					<a th:href="@{/cart(pageNum=${pagein.pages})}" >尾页</a>
+				</nav>
+			</div>
+			<div class="group-xl group-justify justify-content-center justify-content-md-between">
+				<div>
+					<form class="ch-form ch-mailform ch-form-inline ch-form-coupon">
+						<div class="form-wrap">
+							<input class="form-input form-input-inverse" id="coupon-code" type="text" name="text">
+							<label class="form-label" for="coupon-code">输入金额</label>
+						</div>
+						<div class="form-button">
+							<button class="button button-lg button-primary button-zakaria" type="submit">全部支付</button>
+						</div>
+					</form>
+				</div>
+				<div>
+					<div class="group-xl group-middle">
+						<div>
+							<div class="group-md group-middle">
+								<div class="heading-5 font-weight-medium text-gray-500">总共</div>
+								<div class="heading-3 font-weight-normal"  th:text="${pays}">$30</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+	</script>
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+        $(document).ready(function() {
+            /*
+            var defaults = {
+                  containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+             };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+	</script>
+
+
+
+	<script type="text/javascript" th:inline="javascript">
+        function chan(idd,pricee) {
+            var numm = document.getElementById("num").valueOf().value;
+            $.ajax({
+                url: "http://localhost:8080/chan",
+                type: "get",       //提交方式
+                //向后台提交的数据
+                data:{
+                    num:numm,
+                    id:idd,
+                    price:pricee,
+
+
+                },
+                dataType: "jsonp",       //规定请求成功后返回的数据
+                contentType:"application/json",
+                success: function (data) {
+                    alert("修改成功，请不要频繁修改数据喔")
+                    window.location.href="http://localhost:8080/cart";
+                    console.log(data)
+                    //请求成功之后进入该方法，data为成功后返回的数据
+                },
+                error: function (errorMsg) {
+                    alert("修改失败")
+                    console.log(errorMsg)
+                    //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
+                }
+            })}
+
+			//删除购物车
+            function dele(i) {
+                $.ajax({
+                    url: "http://localhost:8080/dele",
+                    type: "get",       //提交方式
+                    //向后台提交的数据
+                    data: {
+                        id: i,
+                    },
+                    dataType: "jsonp",       //规定请求成功后返回的数据
+                    contentType: "application/json",
+                    success: function (data) {
+                        alert("删除成功")
+                        window.location.href = "http://localhost:8080/cart";
+                        console.log(data)
+                        //请求成功之后进入该方法，data为成功后返回的数据
+                    },
+                    error: function (errorMsg) {
+                        alert("删除失败")
+                        console.log(errorMsg)
+                        //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
+                    }
+                })
+            }
+
+	</script>
+
+
+
+	<script th:src="@{/js/core.min.js}"></script>
+	<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

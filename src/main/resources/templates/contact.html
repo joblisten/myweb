@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>写博客</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gato Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script th:src="@{/js/jquery.min.js}"> </script>
+
+
+	<!--Style-->
+	<link rel="stylesheet" th:href="@{/css/pcss/bootstrap.css}">
+
+
+	<link rel="stylesheet" th:href="@{/css/pcss/style.css}">
+
+	<!--Color Switcher Mockup
+	<link rel="stylesheet" th:href="@{/css/pcss/color-default.css}">
+	<link rel="stylesheet" th:href="@{/css/pcss/color-switcher.css}">  -->
+
+
+
+
+
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><h1>宠物<span>之家</span></h1></a>
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+						<nav>
+							<li><a href="index.html" th:href="@{/index}">首页</a></li>
+							<li><a href="portfolio.html" th:href="@{/portfolio}">宠物商城</a></li>
+							<li><a href="about.html" th:href="@{/cart}">购物车</a></li>
+							<li><a href="index.html" th:href="@{/order}">订单管理</a></li>
+							<li><a class="active" href="myblog.html" th:href="@{/myblog}">我的</a>
+							</li>
+						</nav>
+					</ul>
+				</div>
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+		<div class="banner two">
+			<div class="container">
+				<div class="pag-nav">
+					<ul class="p-list">
+						<li><a href="index.html" th:href="@{/myblog}">我的</a></li> &nbsp;&nbsp;/&nbsp;
+						<li class="act">&nbsp; 写博客</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Section checkout form-->
+	<section class="section section-sm section-first bg-default text-md-left">
+		<div class="container">
+			<div class="row row-50 justify-content-center">
+				<div class="col-md-10 col-lg-6">
+					<h3 class="font-weight-medium" >分享你和宠物们在生活的故事吧！！！</h3>
+					<p></p>
+					<form th:action="@{/myblo}" method="post" enctype="multipart/form-data">
+						<div class="row row-30" >
+							<div class="col-sm-6">
+								<div class="form-wrap">
+									<input class="form-input"  id="checkout-first-name-1" type="text" name="title"  data-constraints="@Required"/>
+									<label class="form-label"   for="checkout-first-name-1">标题</label>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-wrap">
+									<input class="form-input"  id="checkout-last-name-1" type="text" name="aname"  data-constraints="@Required"/>
+									<label class="form-label"  for="checkout-last-name-1">作者</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-wrap">
+									<input class="form-input"  id="checkout-company-1"   name="content" type="text"  data-constraints="@Required"/>
+									<label class="form-label"  for="checkout-company-1">博客内容</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-wrap">
+									<input class="form-input"  id="checkout-address-1" type="text" name="introduction" data-constraints="@Required"/>
+									<label class="form-label"  for="checkout-address-1">简介:让你的博客更加清楚明了</label>
+								</div>
+							</div>
+
+						</div>
+						<p></p>
+						<div>
+							<div class="group-xl group-middle">
+								<input  type="file"  accept="image/*"  name="file"  value="选择封面">
+								<input type="submit"  class="button button-lg button-primary button-zakaria"  value="发表">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+
+
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+	</script>
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+        $(document).ready(function() {
+            /*
+            var defaults = {
+                  containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+             };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+	</script>
+
+
+
+	<script th:src="@{/js/core.min.js}"></script>
+
+	<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

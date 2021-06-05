@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<title>博客</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gato Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script th:src="@{/js/jquery.min.js}"> </script>
+<!--webfonts-->
+ <link href='http://fonts.useso.com/css?family=Raleway:400,100,200,300,500,600,700|Cinzel+Decorative:400,700' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+
+
+
+
+	<!-- CSS
+   ================================================== -->
+	<link rel="stylesheet" th:href="@{/css/base.css}">
+	<link rel="stylesheet" th:href="@{/css/vendor.css}">
+	<link rel="stylesheet" th:href="@{/css/main.css}">
+
+
+
+
+
+	<!-- script
+    ================================================== -->
+	<script th:src="@{/js/modernizr.js}"></script>
+	<script th:src="@{/js/pace.min.js}"></script>
+
+
+
+
+</head>
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><h1>宠物<span>之家</span></h1></a>
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+					<nav>
+						<li><a href="index.html" th:href="@{/index}">首页</a></li>
+						<li><a href="portfolio.html" th:href="@{/portfolio}">宠物商城</a></li>
+						<li><a href="about.html" th:href="@{/cart}">购物车</a></li>
+						<li><a href="index.html" th:href="@{/order}">订单管理</a></li>
+						<li><a class="active" href="myblog.html" th:href="@{/myblog}">我的</a>
+							</li>
+					</nav>
+					</ul>
+				</div>
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+	<div class="banner two">
+		<div class="container">	
+		<div class="pag-nav">
+				<ul class="p-list">
+					<li><a href="index.html" th:href="@{/blog}">宠物论坛</a></li> &nbsp;&nbsp;/&nbsp;
+					<li class="act">&nbsp; 我的博客</li>
+				</ul>
+			</div>
+
+		</div>   
+	</div>
+	</div>
+	<!-- masonry
+  ================================================== -->
+	<section id="bricks">
+
+		<div class="row masonry">
+
+			<!-- brick-wrapper -->
+			<div class="bricks-wrapper">
+
+				<div class="grid-sizer"></div>
+				<!-- 广告宣传栏 -->
+				<article class="brick entry format-quote animate-this" >
+
+					<div class="entry-thumb" >
+						<blockquote>
+							<p><a th:href="@{/contact}">写博客</a></p>
+
+							<cite th:text="${names}"></cite>
+						</blockquote>
+					</div>
+
+				</article> <!-- end article -->
+
+				<!-- 博客列表 -->
+				<article class="brick entry animate-this" th:each="myblog:${myblogs}">
+
+					<div class="entry-thumb">
+						<a th:href="${myblog.getAimages()}" class="thumb-link">
+							<img th:src="${myblog.getAimages()}" alt="Shutterbug">
+						</a>
+					</div>
+
+					<div class="entry-text">
+						<div class="entry-header">
+
+							<div class="entry-meta">
+               			<span class="cat-links">
+               				<a href="#" th:text="${myblog.getAname()}">Photography</a>
+               				<a href="#" th:text="${myblog.getAdate()}">html</a>
+                            <a href="#" th:text="${myblog.getPageview()}">html</a>
+               			</span>
+							</div>
+
+							<h1 class="entry-title" ><a th:id="${myblog.getAid()}"  th:text="${myblog.getTitle()}" th:href="@{/blogg(id=${myblog.getAid()})}"></a></h1>
+
+						</div>
+						<div class="entry-excerpt" th:text="${myblog.getIntroduction()}">
+							Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
+						</div>
+
+					</div>
+
+				</article> <!-- end article -->
+
+
+
+			</div> <!-- end brick-wrapper -->
+
+		</div> <!-- end row -->
+
+		<div class="row">
+
+			<nav class="pagination">
+				<span class="page-numbers prev inactive">Prev</span>
+				<span class="page-numbers current">1</span>
+				<a href="#" class="page-numbers">2</a>
+				<a href="#" class="page-numbers">3</a>
+				<a href="#" class="page-numbers">4</a>
+				<a href="#" class="page-numbers">5</a>
+				<a href="#" class="page-numbers">6</a>
+				<a href="#" class="page-numbers">7</a>
+				<a href="#" class="page-numbers">8</a>
+				<a href="#" class="page-numbers">9</a>
+				<a href="#" class="page-numbers next">Next</a>
+			</nav>
+
+		</div>
+
+	</section> <!-- end bricks -->
+
+	<!-- Java Script
+      ================================================== -->
+	<script th:src="@{/js/jquery-2.1.3.min.js}"></script>
+	<script th:src="@{/js/plugins.js}"></script>
+
+	<script th:src="@{/js/main.js}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>购物详情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script src="../static/js/jquery.min.js"> </script>
+
+
+	<!--Style-->
+	<link rel="stylesheet" th:href="@{/css/pcss/bootstrap.css}">
+
+	<link rel="stylesheet" th:href="@{/css/pcss/style.css}">
+
+	<!--Color Switcher Mockup-->
+	<link rel="stylesheet" th:href="@{/css/pcss/color-default.css}">
+	<link rel="stylesheet" th:href="@{/css/pcss/color-switcher.css}">
+
+
+</head>
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><h1>宠物<span>之家</span></h1></a>
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+					<nav>
+						<li><a href="index.html" th:href="@{/index}">首页</a></li>
+						<li><a href="about.html" th:href="@{/about}">店铺简介</a></li>
+						<li><a href="portfolio.html" th:href="@{/portfolio}" class="active">宠物商城</a></li>
+						<li><a href="index.html" th:href="@{/index}">宠物论坛</a></li>
+						<li><a href="contact.html" th:href="@{/contact}">我的</a></li>
+					</nav>
+					</ul>
+				</div>
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+		<div class="banner two">
+			<div class="container">
+				<div class="pag-nav">
+					<ul class="p-list">
+						<li><a href="index.html" th:href="@{/index}">首页</a></li> &nbsp;&nbsp;/&nbsp;
+						<li class="act">&nbsp; 购物详情</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+	<!-- Single Product-->
+	<section class="section section-md section-first bg-default" th:each="lis:${liss}">
+		<div class="container">
+			<div class="row row-30">
+				<div class="col-lg-6">
+					<div class="slick-vertical slick-product" >
+						<!-- Slick Carousel-->
+						<div class="slick-slider carousel-parent" id="carousel-parent" data-items="1" data-swipe="true" data-child="#child-carousel" data-for="#child-carousel">
+							<div class="item">
+								<div class="slick-product-figure"><img th:src="${lis.getUrl()}" alt="" width="530" height="480"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="single-product">
+						<h3 class="text-transform-none font-weight-medium"   th:text="${lis.getName()}" th:value="${lis.getId()}"></h3>
+						<div class="group-md group-middle">
+							<div class="single-product-price" th:text="${'$'+lis.getPrice()}"></div>
+							<div class="single-product-rating"><span class="icon mdi mdi-star"></span><span class="icon mdi mdi-star"></span><span class="icon mdi mdi-star"></span><span class="icon mdi mdi-star"></span><span class="icon mdi mdi-star-half"></span></div>
+						</div>
+
+						<p th:if="${lis.getStyle() eq 'dog'}">狗狗是人类最忠实，最信任的伙伴，他很听话，懂得主人心情；他很懂事，会帮忙看家，所以要记得好好待它喔，给它买好多好吃的和玩具喔</p>
+						<p th:if="${lis.getStyle() eq 'cat'}">猫咪是你最贴心，最温暖的动物。猫咪很喜欢粘人，冬天的时候可以给你取暖。猫咪一般会比较懒，所以你要准备好一个漂漂亮亮的家，也要好好对它喔</p>
+
+						<hr class="hr-gray-100">
+						<ul class="list list-description">
+							<li><span>Categories:</span><span th:text="${lis.getStyle()}"></span></li>
+							<li><span>Weight:</span><span>0.5 kg</span></li>
+							<li><span>year:</span><span>3 mouth</span></li>
+						</ul>
+						<div class="group-xs group-middle">
+							<div class="product-stepper">
+
+								<input class="form-input"  id="num" type="number" data-zeros="true" value="1"  min="1" max="1000">
+							</div>
+							<div><button class="button button-lg button-secondary button-zakaria" id="add" onclick="ad()">加入购物车</button></div>
+							<div><button class="button button-lg button-secondary button-zakaria" id="buy" onclick="">立即购买</button></div>
+						</div>
+					</div>
+				</div>
+
+
+					</div>
+						<hr class="hr-gray-100">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript" th:inline="javascript">
+        /*jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });*/
+
+
+        var pid = '[[${liss}]]';
+        var styl = '[[${styl}]]';
+
+        function ad() {
+            var num = document.getElementById("num").valueOf().value; //数字
+            $.ajax({
+                url: "http://localhost:8080/add",
+                type: "get",       //提交方式
+                //向后台提交的数据
+				data:{
+                    num:num,
+					pid:pid, //发送宠物编号
+                    styl:styl,
+
+				},
+                dataType: "jsonp",       //规定请求成功后返回的数据
+                contentType:"application/json",
+                success: function (data) {
+                     alert("加入成功")
+					window.location.href="http://localhost:8080/cart";
+                    console.log(data)
+                    //请求成功之后进入该方法，data为成功后返回的数据
+                },
+                error: function (errorMsg) {
+                    alert("加入失败")
+                    console.log(errorMsg)
+                    //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
+                }
+            })
+        }
+	</script>
+	<!--start-smoth-scrolling-->
+	<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+</body>
+</html>

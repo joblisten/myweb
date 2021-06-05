@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>宠物之家</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gato Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script th:src="@{/js/jquery.min.js}"> </script>
+<!--webfonts-->
+ <link href='http://fonts.useso.com/css?family=Raleway:400,100,200,300,500,600,700|Cinzel+Decorative:400,700' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+
+	<link rel="stylesheet" th:href="@{/css/base.css}">
+	<link rel="stylesheet" th:href="@{/css/vendor.css}">
+	<link rel="stylesheet" th:href="@{/css/main.css}">
+
+</head>
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html" ><h1>宠物<span>之家</span></h1></a>
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+					<nav>
+						<li><a href="index.html" th:href="@{/index}">首页</a></li>
+						<li><a href="about.html" th:href="@{/about}">店铺简介</a></li>
+						<li><a class="active"  th:href="@{/portfolio}">宠物商城</a></li>
+						<li><a href="index.html" th:href="@{/blog}">宠物论坛</a></li>
+						<li><a href="myblog.html" th:href="@{/myblog}">我的</a>
+							</li>
+					</nav>
+					</ul>
+				</div>
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+	<div class="banner two">
+		<div class="container">	
+		<div class="pag-nav">
+				<ul class="p-list">
+					<li><a href="index.html">首页</a></li> &nbsp;&nbsp;/&nbsp;
+					<li class="act">&nbsp;宠物之家</li>
+				</ul>
+			</div>
+
+		</div>   
+	</div>
+	</div>
+</div>
+<!--gallery-->
+	<div class="gallery services">
+		<div class="container">
+				<div class="port-head">
+				   <h3>宠物商城</h3>
+					   <li>	<a th:href="@{/portfolio}">猫咪</a></li>
+					   <li><a th:href="@{/portfolio(style=dog)}">狗狗</a></li>
+
+
+			  	</div>
+			<div class="portfolio-bottom" >
+				<div class="gallery-one two">
+					<div class="col-md-3 gallery-left two" th:each="dcat:${dcats}">
+						<a th:href="@{/product(style=${dcat.getStyle()},id=${dcat.getId()})}" title="Image Title" th:title="${dcat.getName()}">
+								<img  th:src="${dcat.getUrl()}" alt="" class="img-responsive zoom-img"/>
+							<div class="port-head">
+							<h4 th:text="${dcat.getName()}"></h4>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+        <p >当前第<span th:text="${pageinfo.pageNum}"></span>页，总<span th:text="${pageinfo.pages}"></span>页，共<span th:text="${pageinfo.total}"></span>条记录</p>
+		<nav class="pagination">
+
+			<a th:href="@{/portfolio(style=${dcats.get(0).getStyle()})}" class="page-numbers">首页</a>
+			<a th:href="@{/portfolio(style=${dcats.get(0).getStyle()},pageNum=${pageinfo.hasPreviousPage}?${pageinfo.prePage}:1)}" class="page-numbers" >上一页</a><!-- 是否有上一页：有回到上一页，没有回到首页 -->
+			<a th:href="@{/portfolio(style=${dcats.get(0).getStyle()},pageNum=2)}" class="page-numbers">2</a>
+			<a th:href="@{/portfolio(style=${dcats.get(0).getStyle()},pageNum=3)}" class="page-numbers">3</a>
+			<a th:href="@{/portfolio(style=${dcats.get(0).getStyle()},pageNum=4)}" class="page-numbers">4</a>
+			<a th:href="@{/portfolio(style=${dcats.get(0).getStyle()},pageNum=5)}" class="page-numbers">5</a>
+			<a th:href="@{/portfolio(style=${dcats.get(0).getStyle()},pageNum=6)}" class="page-numbers">6</a>
+			<a th:href="@{/portfolio(style=${dcats.get(0).getStyle()},pageNum=${pageinfo.hasNextPage}?${pageinfo.nextPage}:${pageinfo.pages})}" class="page-numbers">下一页</a>
+			<a th:href="@{/portfolio(style=${dcats.get(0).getStyle()},pageNum=${pageinfo.pages})}" class="page-numbers">尾页</a>
+		</nav>
+
+	</div>
+
+
+	<!--swipebox -->	
+			<link rel="stylesheet" href="../static/css/swipebox.css">
+				<script src="../static/js/jquery.swipebox.min.js"></script>
+				<script type="text/javascript">
+					jQuery(function($) {
+						$(".swipebox").swipebox();
+					});
+				</script>
+			<!--//swipebox Ends -->
+
+
+
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+	</script>
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+        $(document).ready(function() {
+            /*
+            var defaults = {
+                  containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+             };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+	</script>
+
+	<script th:src="@{/js/core.min.js}"></script>
+	<!--<script th:src="@{/pcss/color-switcher.js}"></script>-->
+	<script th:src="@{/pcss/colorJS.js}"></script>
+	<!--<script th:src="@{/js/script.js}"></script>-->
+</body>
+</html>

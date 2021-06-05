@@ -1,0 +1,19 @@
+/*
+ Default: #ff8400;
+ */
+
+h1, a {
+	color: #a58838;
+}
+.Button, .Form__control {
+	border-color: #a58838;
+}
+.Button {
+	color: #a58838;
+}
+.Button:focus, .Button:hover {
+	color: #fff;
+}
+.Form__control:focus {
+	 
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>商品管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gato Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script th:src="@{/js/jquery.min.js}"> </script>
+
+
+	<!--Style-->
+	<link rel="stylesheet" th:href="@{/css/pcss/bootstrap.css}">
+	<link rel="stylesheet" th:href="@{/css/pcss/fonts.css}">
+	<link rel="stylesheet" th:href="@{/css/pcss/style.css}">
+
+	<!--Color Switcher Mockup-->
+	<link rel="stylesheet" th:href="@{/css/pcss/color-default.css}">
+	<link rel="stylesheet" th:href="@{/css/pcss/color-switcher.css}">
+
+
+
+
+
+
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><h1>宠物<span>之家</span></h1></a>
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+						<nav>
+							<li><a  th:href="@{/admin/user}">用户管理</a></li>
+							<li><a  th:href="@{/admin/order}">订单管理</a></li>
+							<li><a  th:href="@{/admin/cart}" class="active">商品管理</a></li>
+							<li><a  th:href="@{/admin/blog}" >博客管理</a></li>
+							<li><a   th:href="@{/myblog}">我的</a>
+							</li>
+						</nav>
+					</ul>
+				</div>
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+		<div class="banner two">
+			<div class="container">
+				<div class="pag-nav">
+					<ul class="p-list">
+						<li><a href="index.html" th:href="@{/index}">首页</a></li> &nbsp;&nbsp;/&nbsp;
+						<li class="act">&nbsp; 商品管理</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+	<!-- Shopping Cart-->
+	<section class="section section-md bg-default">
+		<div class="container">
+			<!-- shopping-cart-->
+			<div class="table-custom-responsive">
+				<table class="table-custom table-cart">
+					<thead>
+					<tr>
+
+						<th>宠物名字</th>
+						<th>编号</th>
+						<th>价格</th>
+						<th>CHANGE</th>
+						<th>DELETE</th>
+
+
+					</tr>
+					</thead>
+					<tbody th:each="pro:${product}">
+					<tr>
+						<td><a class="table-cart-figure" th:href="${pro.getUrl()}"><img th:src="${pro.getUrl()}"  alt="" width="146" height="132"/></a><a class="table-cart-link" id="pname" th:text="${pro.getName()}"></a></td>
+						<td th:text="${pro.getId()}"></td>
+                        <td>
+							<div class="table-cart-stepper">
+								<input class="form-input"  data-zeros="true" id="num"  th:value="${pro.getPrice()}">
+							</div>
+						</td>
+						<td><button class="button button-lg button-primary button-zakaria"  th:onclick="'javascript:adminch('+${pro.getId()}+''+','+''+${pro.getPrice()}+')' ">修改</button></td>
+						<td><button class="button button-lg button-primary button-zakaria" th:onclick="'javascript:dele('+${pro.getId()}+')' ">下架</button></td>
+
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<p >当前第<span th:text="${pagein.pageNum}"></span>页，总<span th:text="${pagein.pages}"></span>页，共<span th:text="${pagein.total}"></span>条记录</p>
+				<nav>
+					<p></p>
+					<a th:href="@{/admin/cart(style=${product.get(0).getStyle()})}" >首页</a>
+					<a th:href="@{/admin/cart(style=${product.get(0).getStyle()},pageNum=${pagein.hasPreviousPage}?${pagein.prePage}:1)}"  >上一页</a><!-- 是否有上一页：有回到上一页，没有回到首页 -->
+					<a th:href="@{/admin/cart(style=${product.get(0).getStyle()},pageNum=2)}">2</a>
+					<a th:href="@{/admin/cart(style=${product.get(0).getStyle()},pageNum=3)}" >3</a>
+					<a th:href="@{/admin/cart(style=${product.get(0).getStyle()},pageNum=4)}">4</a>
+					<a th:href="@{/admin/cart(style=${product.get(0).getStyle()},pageNum=5)}">5</a>
+					<a th:href="@{/admin/cart(style=${product.get(0).getStyle()},pageNum=${pagein.hasNextPage}?${pagein.nextPage}:${pagein.pages})}" >下一页</a>
+					<a th:href="@{/admin/cart(style=${product.get(0).getStyle()},pageNum=${pagein.pages})}" >尾页</a>
+				</nav>
+			</div>
+			<div class="group-xl group-justify justify-content-center justify-content-md-between">
+				<div>
+					<form class="ch-form ch-mailform ch-form-inline ch-form-coupon">
+						<div class="form-button">
+							<a class="button button-lg button-primary button-zakaria" th:href="@{/admin/ad}" >添加商品</a>
+						</div>
+						<div th:if="${product.get(0).getStyle()=='dog'}">
+							<td><a  class="button button-lg button-primary button-zakaria" th:href="@{/admin/cart(style=cat)}" >小猫</a></td>
+						</div>
+						<div th:if="${product.get(0).getStyle()=='cat'}"><td><a  class="button button-lg button-primary button-zakaria" th:href="@{/admin/cart(style=dog)}">小狗</a></td></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+	</script>
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+        $(document).ready(function() {
+            /*
+            var defaults = {
+                  containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+             };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+	</script>
+
+
+
+	<script type="text/javascript" th:inline="javascript">
+        //修改价格
+		function adminch(idd,sty) {
+            var pric = document.getElementById("num").valueOf().value;
+            $.ajax({
+                url: "http://localhost:8080/admin/ch",
+                type: "get",       //提交方式
+                //向后台提交的数据
+                data:{
+                    price:pric,
+                    id:idd,
+					style:sty,
+
+                },
+                dataType: "json",       //规定请求成功后返回的数据
+                contentType:"application/json",
+                success: function (data) {
+                    alert("修改价格成功")
+                    window.location.href="http://localhost:8080/admin/cart";
+                    console.log(data)
+                    //请求成功之后进入该方法，data为成功后返回的数据
+                },
+                error: function (errorMsg) {
+                    alert("修改价格失败")
+                    console.log(errorMsg)
+                    //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
+                }
+            })}
+
+
+
+	</script>
+
+
+
+	<script th:src="@{/js/core.min.js}"></script>
+	<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

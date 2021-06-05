@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<title>宠物论坛</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gato Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script th:src="@{/js/jquery.min.js}"> </script>
+<!--webfonts-->
+ <link href='http://fonts.useso.com/css?family=Raleway:400,100,200,300,500,600,700|Cinzel+Decorative:400,700' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+
+
+
+
+	<!-- CSS
+   ================================================== -->
+	<link rel="stylesheet" th:href="@{/css/base.css}">
+	<link rel="stylesheet" th:href="@{/css/vendor.css}">
+	<link rel="stylesheet" th:href="@{/css/main.css}">
+
+
+
+
+
+	<!-- script
+    ================================================== -->
+	<script th:src="@{/js/modernizr.js}"></script>
+	<script th:src="@{/js/pace.min.js}"></script>
+
+
+
+
+</head>
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><h1>宠物<span>之家</span></h1></a>
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+					<nav>
+						<li><a href="index.html" th:href="@{/index}">首页</a></li>
+						<li><a href="about.html" th:href="@{/about}">店铺简介</a></li>
+						<li><a href="portfolio.html" th:href="@{/portfolio}">宠物商城</a></li>
+						<li><a class="active" href="index.html" th:href="@{/blog}">宠物论坛</a></li>
+						<li><a href="myblog.html" th:href="@{/myblog}">我的</a></li>
+					</nav>
+					</ul>
+				</div>
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+	<div class="banner two">
+		<div class="container">	
+		<div class="pag-nav">
+				<ul class="p-list">
+					<li><a href="index.html" th:href="@{/index}">首页</a></li> &nbsp;&nbsp;/&nbsp;
+					<li class="act">&nbsp; 博客</li>
+				</ul>
+			</div>
+
+		</div>   
+	</div>
+	</div>
+	<!-- masonry
+  ================================================== -->
+	<section id="bricks">
+
+		<div class="row masonry">
+
+			<!-- brick-wrapper -->
+			<div class="bricks-wrapper">
+
+				<div class="grid-sizer"></div>
+
+				<div class="brick entry featured-grid animate-this">
+					<div class="entry-content">
+						<div id="featured-post-slider" class="flexslider">
+							<ul class="slides">
+
+								<li>
+									<div class="featured-post-slide">
+
+										<div class="post-background" style="background-image:url('../static/images/g2.jpg');"></div>
+
+										<div class="overlay"></div>
+
+										<div class="post-content">
+											<ul class="entry-meta">
+												<li>September 06, 2020</li>
+												<li><a href="#" >Naruto Uzumaki</a></li>
+											</ul>
+
+											<h1 class="slide-title"><a href="single-standard.html" title="">Minimalism Never Goes Out of Style</a></h1>
+										</div>
+
+									</div>
+								</li> <!-- /slide -->
+
+								<li>
+									<div class="featured-post-slide">
+
+										<div class="post-background" style="background-image:url('../static/images/矮脚猫.jpg');"></div>
+
+										<div class="overlay"></div>
+
+										<div class="post-content">
+											<ul class="entry-meta">
+												<li>August 29, 2020</li>
+												<li><a href="#">Sasuke Uchiha</a></li>
+											</ul>
+
+											<h1 class="slide-title"><a href="single-standard.html" title="">Enhancing Your Designs with Negative Space</a></h1>
+										</div>
+
+									</div>
+								</li> <!-- /slide -->
+
+								<li>
+									<div class="featured-post-slide">
+
+										<div class="post-background" style="background-image:url('../static/images/双色短尾猫.jpg');;"></div>
+
+										<div class="overlay"></div>
+
+										<div class="post-content">
+											<ul class="entry-meta">
+												<li>August 27, 2020</li>
+												<li><a href="#" class="author">Naruto Uzumaki</a></li>
+											</ul>
+
+											<h1 class="slide-title"><a href="single-standard.html" title="">Music Album Cover Designs for Inspiration</a></h1>
+										</div>
+
+									</div>
+								</li> <!-- end slide -->
+
+							</ul> <!-- end slides -->
+						</div> <!-- end featured-post-slider -->
+					</div> <!-- end entry content -->
+				</div>
+
+				<!-- 博客置顶 -->
+				<article class="brick entry format-standard animate-this" th:each="bs:${b}" >
+
+					<div class="entry-thumb" >
+						<a th:href="${bs.getAimages()}" class="thumb-link">
+							<img th:src="${bs.getAimages()}"   alt="building">
+						</a>
+					</div>
+
+					<div class="entry-text">
+						<div class="entry-header">
+
+							<div class="entry-meta">
+               			<span class="cat-links">
+               				<a href="#" th:text="${bs.getAname()}">Design</a>
+               				<a href="#" th:text="${bs.getAdate()}">Photography</a>
+							<a href="#" th:text="${bs.getPageview()}">访问量：0</a>
+               			</span>
+							</div>
+
+							<h1 class="entry-title"><a  th:href="@{/blogg(id=${bs.getAid()})}" th:id="${bs.getAid()}" th:text="${bs.getTitle()}">Just a Standard Format Post.</a></h1>
+
+						</div>
+						<div class="entry-excerpt" th:text="${bs.getIntroduction()}">
+							Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
+						</div>
+					</div>
+
+				</article> <!-- end article -->
+
+
+
+				<!-- format audio here 音频-->
+				<article class="brick entry format-audio animate-this">
+
+					<div class="entry-thumb">
+						<a href="#" class="thumb-link">
+							<img src="../static/images/thumbs/concert.jpg" alt="concert">
+						</a>
+
+						<div class="audio-wrap">
+							<audio id="player" src="../static/media/AirReview-Landmarks-02-ChasingCorporate.mp3" width="100%" height="42" controls="controls"></audio>
+						</div>
+					</div>
+
+					<div class="entry-text">
+						<div class="entry-header">
+
+							<div class="entry-meta">
+               			<span class="cat-links">
+               				<a href="#">Design</a>
+               				<a href="#">Music</a>
+               			</span>
+							</div>
+
+							<h1 class="entry-title"><a href="single-audio.html">This Is a Audio Format Post.</a></h1>
+
+						</div>
+						<div class="entry-excerpt">
+							Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
+						</div>
+					</div>
+
+				</article> <!-- /article -->
+
+				<!-- 广告宣传栏 -->
+				<article class="brick entry format-quote animate-this" >
+
+					<div class="entry-thumb" >
+						<blockquote>
+							<img th:src="@{/images/gzh.jpg}">
+							<p>喜欢猫咪的小伙伴可以关注公众号喔</p>
+
+							<cite>一位情感小当家</cite>
+						</blockquote>
+					</div>
+
+				</article> <!-- end article -->
+
+				<!-- 其他博客 -->
+				<article class="brick entry animate-this" th:each="bbs:${bb}">
+
+					<div class="entry-thumb">
+						<a th:href="${bbs.getAimages()}" class="thumb-link">
+							<img th:src="${bbs.getAimages()}" alt="Shutterbug">
+						</a>
+					</div>
+
+					<div class="entry-text">
+						<div class="entry-header">
+
+							<div class="entry-meta">
+               			<span class="cat-links">
+               				<a href="#" th:text="${bbs.getAname()}">Photography</a>
+               				<a href="#" th:text="${bbs.getAdate()}">html</a>
+							<a href="#" th:text="${bbs.getPageview()}">访问量：0</a>
+               			</span>
+							</div>
+
+							<h1 class="entry-title" ><a th:id="${bbs.getAid()}"  th:text="${bbs.getTitle()}" th:href="@{/blogg(id=${bbs.getAid()})}"></a></h1>
+
+						</div>
+						<div class="entry-excerpt" th:text="${bbs.getIntroduction()}">
+							Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
+						</div>
+
+					</div>
+
+				</article> <!-- end article -->
+
+
+
+			</div> <!-- end brick-wrapper -->
+
+		</div> <!-- end row -->
+
+		<div class="row">
+
+			<nav class="pagination">
+				<a th:href="@{/blog}" class="page-numbers">首页</a>
+				<a th:href="@{/blog(pageNum=${pagein.hasPreviousPage}?${pagein.prePage}:1)}" class="page-numbers" >上一页</a><!-- 是否有上一页：有回到上一页，没有回到首页 -->
+				<a th:href="@{/blog(pageNum=2)}" class="page-numbers">2</a>
+				<a th:href="@{/blog(pageNum=3)}" class="page-numbers">3</a>
+				<a th:href="@{/blog(pageNum=4)}" class="page-numbers">4</a>
+				<a th:href="@{/blog(pageNum=5)}" class="page-numbers">5</a>
+				<a th:href="@{/blog(pageNum=${pagein.hasNextPage}?${pagein.nextPage}:${pagein.pages})}" class="page-numbers">下一页</a>
+				<a th:href="@{/blog(pageNum=${pagein.pages})}" class="page-numbers">尾页</a>
+
+			</nav>
+
+		</div>
+
+	</section> <!-- end bricks -->
+
+	<!-- Java Script
+      ================================================== -->
+	<script th:src="@{/js/jquery-2.1.3.min.js}"></script>
+	<script th:src="@{/js/plugins.js}"></script>
+	<script th:src="@{/js/jquery.appear.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>店铺简介</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gato Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script th:src="@{/js/jquery.min.js}"> </script>
+
+</head>
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html" th:href="@{/index}"><h1>宠物<span>之家</span></h1></a>
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+					<nav>
+						<li><a href="index.html" th:href="@{/index}">首页</a></li>
+						<li><a class="active" href="about.html" th:href="@{/about}">店铺简介</a></li>
+						<li><a href="portfolio.html" th:href="@{/portfolio}">宠物商城</a></li>
+						<li><a href="index.html" th:href="@{/blog}">宠物论坛</a></li>
+						<li><a href="myblog.html" th:href="@{/myblog}">我的</a></li>
+					</nav>
+					</ul>
+				</div>
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+	<div class="banner two">
+		<div class="container">	
+		<div class="pag-nav">
+				<ul class="p-list">
+					<li><a href="index.html">首页</a></li> &nbsp;&nbsp;/&nbsp;
+					<li class="act">&nbsp;服务</li>
+				</ul>
+			</div>
+
+		</div>   
+	</div>
+	</div>
+</div>
+<!--about-->
+	<div class="about two">
+		<div class="container">
+				<div class="about-head">
+				   <h3>猫咪专属</h3>
+				   <p>你是不是还在烦恼不知道养什么猫咪合适？没关系我们帮你智能匹配跟你合适的猫咪，让你不再为选择猫咪犯难</p>
+			  	</div>	
+				<div class="cat-info-section">
+					<div class="cat-info-left">
+						<img src="images/cat.jpg" alt="" />
+					</div>
+					<div class="cat-info-middle">
+						<h4>温柔</h4>
+					</div>
+					<div class="cat-info-right">
+						<h3>英国短尾猫</h3>
+						<p>英国短毛猫，体形圆胖，四肢粗短发达，被毛短而密，头大脸圆，温柔平静，对人友善，极易饲养。英国短毛猫性格大胆好奇，但非常温柔，适应能力也很强，不会因为环境的改变而改变，也不会乱发脾气、更不会乱吵乱叫，它只会尽量爬到比较高的地方，低着头瞪着那双圆圆的大眼睛面带微笑地俯视着你，就好像《爱丽丝梦游仙境》中提到的那只叫做“路易斯”的猫一样，不用语言，只用那可爱的面部表情就抓住了你的心，再也无法改变你对它的爱。 </p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac elit sed enim lobortis pellentesque consectetur ut ligula. Donec quis nunc aliquet, sollicitudin lacus ac, lobortis augue. Aenean commodo mauris ac ex feugiat, id faucibus mauris posuere. Nullam at nunc mi. Sed dolor nisl, hendrerit ut massa quis, feugiat consectetur tortor. In hac habitasse platea dictumst. Nulla facilisi. </p>
+
+			</div>
+		</div>
+	<!--//about-->
+	<!--start-team-->
+		   <div class="team-section"> 
+		   <div class="container">
+				<div class="team">
+				    <div class="col-md-4 team-left">
+					    <h3>智能匹配</h3>
+					</div>
+					 <div class="col-md-8 team-right">
+						<ul class="ch-grid">
+							<li>
+								<div class="ch-item ch-img-1">
+									<div class="ch-info">
+										<h3>幸运匹配</h3>
+										<p>冥冥之中 <a href="#">自有天意</a></p>
+									</div>
+								</div>
+								<h4>真命天猫的</h4>
+								 <p>不一选择</p>
+								<a class="read third"  th:href="@{/random}">幸运匹配</a>
+							</li>
+							<li>
+								<div class="ch-item ch-img-2">
+									<div class="ch-info">
+										<h3>星座匹配</h3>
+										<p>根据你的星座 <a href="#">你的性格</a></p>
+									</div>
+								</div>
+								<h4>最佳猫伴侣</h4>
+                                <p>不二选择</p>
+                                <a class="read third" th:href="@{/conss}">星座匹配</a>
+
+							</li>
+							<li>
+								<div class="ch-item ch-img-3">
+									<div class="ch-info">
+										<h3>精准匹配</h3>
+										<p>付费 <a href="#">一对一的多维度匹配</a></p>
+									</div>
+								</div>
+								<h4>天选之猫</h4>
+									 <p>不三选择</p>
+									<a class="read third" href="boke.html">精准匹配</a>
+							</li>
+						<div class="clearfix"> </div>
+					 </div>
+
+					 <div class="clearfix"> </div>
+				</div>
+			</div>
+		   </div>
+
+<!----family--->
+	<div class="c-family">
+		<div class="container">
+			<div class="family-top">
+				<h3>猫咪之家!!</h3>
+				<p>这是一个温暖的家，这是一个属于你们的家</p>
+				<a class="read two" href="#">进入</a>
+			</div>
+		</div>
+	</div>
+	<!---- footer --->
+	<div class="footer text-center">
+		<div class="container">
+			<div class="footer-grids">
+				<div class="col-md-6 footer-text">
+					<h3>关于我们</h3>
+					<p>我们猫咪的守护天使</p>
+					<p>想要进入我们的话，可以报名参加喔</p>
+					<a class="read" href="boke.html">报名</a>
+				</div>
+				<div class="col-md-6 footer-info">
+					<h3>联系我们</h3>
+					<p>联系电话：15811642565(微信同号) </p>
+					<div class="support">
+						<input type="text" class="text" value="Enter email..." onfocus="this.value = '';" onblur="if (this.value == 'Enter email...') {this.value = 'Enter email...';}">
+						<input type="submit" value="SUBSCRIBE" class="botton">
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+	</script>
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+        $(document).ready(function() {
+            /*
+            var defaults = {
+                  containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+             };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+	</script>
+
+
+</body>
+</html>

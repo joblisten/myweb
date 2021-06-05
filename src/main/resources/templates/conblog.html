@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<title>博客管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Gato Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link th:href="@{/css/bootstrap.css}" rel='stylesheet' type='text/css' />
+
+<!-- Custom Theme files -->
+<link th:href="@{/css/stylet.css}" rel='stylesheet' type='text/css' />
+<script th:src="@{/js/jquery.min.js}"> </script>
+	<!-- 表格 -->
+	<link th:href="@{/css/admintable.css}" rel='stylesheet' type='text/css' />
+
+</head>
+<body>
+	<!--start-home-->
+	<div id="home" class="header">
+		<div class="header-bottom">
+			<div class="container">
+				<div class="logo">
+					<a href="index.html"><h1>宠物<span>之家</span></h1></a>
+				</div>
+				<span class="menu"></span>
+				<div class="top-menu">
+					<ul>
+					<nav>
+						<li><a  th:href="@{/admin/user}">用户管理</a></li>
+						<li><a  th:href="@{/admin/order}">订单管理</a></li>
+						<li><a  th:href="@{/admin/cart}">商品管理</a></li>
+						<li><a  th:href="@{/admin/blog}" class="active">博客管理</a></li>
+						<li><a   th:href="@{/myblog}">我的</a>
+							</li>
+					</nav>
+					</ul>
+				</div>
+
+
+
+				<!-- script for menu -->
+				<script>
+				$( "span.menu" ).click(function() {
+				  $( ".top-menu" ).slideToggle( "slow", function() {
+				    // Animation complete.
+				  });
+				});
+			</script>
+			<!-- script for menu -->
+				<div class="clearfix"></div>
+			</div>
+		</div>
+
+	<div class="banner two">
+		<div class="container">	
+		<div class="pag-nav">
+				<ul class="p-list">
+					<li><a href="index.html" th:href="@{/index}">首页</a></li> &nbsp;&nbsp;/&nbsp;
+					<li class="act">&nbsp; 博客管理</li>
+				</ul>
+			</div>
+
+		</div>   
+	</div>
+	</div>
+
+	<h2>博客管理</h2>
+	<div class="table-wrapper">
+		<table class="fl-table" >
+			<thead>
+			<tr>
+				<th>博客id</th>
+				<th>用户名</th>
+				<th>标题</th>
+				<th>日期</th>
+				<th>阅读量</th>
+				<th>操作</th>
+
+
+
+			</tr>
+			</thead>
+			<tbody th:each="blog:${b}">
+			<tr>
+				<td th:text="${blog.getAid()}"></td>
+				<td th:text="${blog.getAname()}"></td>
+				<td ><a th:href="@{/blogg(id=${blog.getAid()})}" th:text="${blog.getTitle()}"></a></td>
+				<td th:text="${blog.getAdate()}"></td>
+				<td th:text="${blog.getPageview()}"></td>
+				<td><div class="btn_main"><button th:onclick="'javascript:blogde('+${blog.getAid()}+')' ">删除</button></div></td>
+
+			</tr>
+
+			<tbody>
+		</table>
+	</div>
+	<div class="support">
+		<form th:action="@{/admin/seblog}">
+			<input type="submit" value="搜索博客" class="botton" >
+			<input type="text" class="text"  name="name"  value="输入用户/标题" onfocus="this.value = '';" onblur="if (this.value == '输入订单号/用户...') {this.value = '输入订单号/用户...';}">
+		</form>
+	</div>
+	<p >当前第<span th:text="${pageinn.pageNum}"></span>页，总<span th:text="${pageinn.pages}"></span>页，共<span th:text="${pageinn.total}"></span>条记录</p>
+	<div >
+		<nav >
+			<a th:href="@{/admin/blog}" >首页</a>
+			<a th:href="@{/admin/blog(pageNum=${pageinn.hasPreviousPage}?${pageinn.prePage}:1)}"  >上一页</a><!-- 是否有上一页：有回到上一页，没有回到首页 -->
+			<a th:href="@{/admin/blog(pageNum=2)}" >2</a>
+			<a th:href="@{/admin/blog(pageNum=3)}" >3</a>
+			<a th:href="@{/admin/blog(pageNum=4)}" >4</a>
+			<a th:href="@{/admin/blog(pageNum=5)}">5</a>
+			<a th:href="@{/admin/blog(pageNum=${pageinn.hasNextPage}?${pageinn.nextPage}:${pageinn.pages})}" >下一页</a>
+			<a th:href="@{/admin/blog(pageNum=${pageinn.pages})}" >尾页</a>
+		</nav>
+	</div>
+
+	<script type="text/javascript" th:inline="javascript">
+        function blogde(idd) {
+            $.ajax({
+                url: "http://localhost:8080/admin/blogde",
+                type: "get",       //提交方式
+                //向后台提交的数据
+                data:{
+                    id:idd,
+
+                },
+                dataType: "JSON",       //规定请求成功后返回的数据
+                contentType:"application/json",
+                success: function (data) {
+                    alert("删除博客成功")
+                    window.location.href="http://localhost:8080/admin/blog";
+                    console.log(data)
+                    //请求成功之后进入该方法，data为成功后返回的数据
+                },
+                error: function (errorMsg) {
+                    alert("删除博客失败")
+                    console.log(errorMsg)
+                    //请求失败之后进入该方法，errorMsg为失败后返回的错误信息
+                }
+            })}
+
+	</script>
+
+	<!-- Java Script
+      ================================================== -->
+	<script th:src="@{/js/jquery-2.1.3.min.js}"></script>
+	<script th:src="@{/js/plugins.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+
+
+</body>
+</html>
