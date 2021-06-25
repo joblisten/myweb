@@ -2,23 +2,40 @@
 <!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出-->
 <!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数-->
 <configuration>
+    <!--status 设置本身日志级别,默认为OFF-->
     <!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
 
     <appenders>
 
-    <console name="Console" target="SYSTEM_OUT">
-        <!--输出日志的格式-->
-        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
-        <ThresholdFilter level="info" onMatch="ACCEPT"
-                         onMismatch="DENY" />
-    </console>
-    </appenders>
+        <console name="Console" target="SYSTEM_OUT">
+            <!--输出日志的格式-->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <ThresholdFilter level="info" onMatch="ACCEPT"
+                             onMismatch="DENY"/>
+        </console>
 
-            <Loggers>
-                <Root level="debug">
-                    <AppenderRef ref="Console" />
-                </Root>
-            </Loggers>
+        <File name="log" fileName="D:\项目\log\pro.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>
+
+        <RollingFile name="RollingFileInfo" fileName="D:\项目\log\info.log"
+                     filePattern="${sys:user.home}/logs/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log">
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+
+
+    </appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="log"/>
+            <AppenderRef ref="RollingFileInfo"/>
+
+        </Root>
+    </Loggers>
 
 
 </configuration>

@@ -1,53 +1,41 @@
 package com.example.config;
 
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-/*
-springmvc的配置
+
+/**
+ *
  */
 @Configuration
-public class MyConfig implements WebMvcConfigurer {
-
-    private String filePath="E:/Idea workspace/demoweb2/src/main/resources/static/images/";
-
-    private String filePathRe="/images/**";
+public class Myconfig implements WebMvcConfigurer {
+    static final String ORIGINS[] = new String[]{"GET", "POST", "PUT", "DELETE"};
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/logint").setViewName("logint");
-        registry.addViewController("/index").setViewName("index");
-        registry.addViewController("/about").setViewName("about");
-        registry.addViewController("/contact").setViewName("contact");
-        registry.addViewController("/wrong").setViewName("product");
-        registry.addViewController("/register").setViewName("register");
-        registry.addViewController("/conss").setViewName("conss");
-        registry.addViewController("/cons").setViewName("cons");
-        registry.addViewController("/blog").setViewName("blog");
-        registry.addViewController("/product").setViewName("product");
-        registry.addViewController("/cart").setViewName("cart");
-        registry.addViewController("/dele").setViewName("dele");
-        registry.addViewController("/pay").setViewName("pay");
-        registry.addViewController("/admin/user").setViewName("conuser");
-        registry.addViewController("/com").setViewName("conss");
-
-
-
-
-
-
-
-
+        registry.addViewController("/login").setViewName("login");
 
     }
 
+    /**
+     * 跨域解决
+     * @param registry
+     */
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
-        //告知系统static 当成 静态资源访问,不然静态图片回显失败
-        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        registry.addResourceHandler(filePathRe).addResourceLocations("file:"+filePath);
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                // 所有的当前站点的请求地址，都支持跨域访问。
+                .allowedOrigins("*")
+                // 所有的外部域都可跨域访问。 如果是localhost则很难配置，因为在跨域请求的时候，外部域的解析可能是localhost、127.0.0.1、主机名
+                .allowCredentials(true)
+                // 是否支持跨域用户凭证
+                .allowedMethods(ORIGINS)
+                // 当前站点支持的跨域请求类型是什么
+                .maxAge(3600);
+               // 超时时长设置为1小时。 时间单位是秒。
     }
+
+
 }

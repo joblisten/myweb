@@ -1,53 +1,51 @@
 package com.example.util;
 
 import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.List;
 import java.util.Map;
-
+@Slf4j
 @Component
 public class IpAddressUtil {
-    /**
-     * 使用腾讯的接口通过ip拿到城市信息
-     */
-    private static final String KEY = "XHPBZ-C4SLF-PWHJH-NRS5J-64RWE-Y4F6W";
 
+    /**
+     *响应返回的格式为
+     * {"status":"success","country":"中国","countryCode":"CN",
+     * "region":"GD","regionName":"广东","city":"广州市","zip":"",
+     * "lat":23.1181,"lon":113.2539,"timezone":"Asia/Shanghai","
+     * isp":"CHINANET Guangdong province Guangzhou MAN network",
+     * "org":"Chinanet GD","as":"AS134773 CHINANET Guangdong province Guangzhou MAN network",
+     * "query":"119.131.77.2"}
+     *
+     * @param ip
+     * @return
+     */
     public static String getCityInfo(String ip) {
-        String s = sendGet(ip, KEY);
+        String s = sendGet(ip);
         Map map = JSONObject.parseObject(s, Map.class);
-        String message = (String) map.get("message");
-        if ("query ok".equals(message)) {
-            Map result = (Map) map.get("result");
-            Map addressInfo = (Map) result.get("ad_info");
-            String nation = (String) addressInfo.get("nation");
-            String province = (String) addressInfo.get("province");
-            String district = (String) addressInfo.get("district");
-            String city = (String) addressInfo.get("city");
-            String address = nation + "-" + province + "-" + city + "-" + district;
+        if (map.get("status").equals("success")) {
+            String country = (String) map.get("country");
+            String regionName = (String) map.get("regionName");
+            String city = (String) map.get("city");
+            String address = country + "-" + regionName + "-" + city;
             return address;
         } else {
-            System.out.println(message);
+            log.info("status{}",map.get("status"));
             return null;
         }
     }
 
-    /**
-     * 根据在腾讯位置服务上申请的key进行请求操作
-     *
-     * @param ip
-     * @param key
-     * @return
-     */
-    public static String sendGet(String ip, String key) {
+
+    public static String sendGet(String ip) {
         String result = "";
         BufferedReader in = null;
         try {
-            String url = "https://apis.map.qq.com/ws/location/v1/ip?ip=" + ip + "&key=" + key;
+           //根据ip获取地区
+            String url = "http://ip-api.com/json/" + ip + "?lang=zh-CN";
             URL realUrl = new URL(url);
             // 打开和URL之间的连接
             URLConnection connection = realUrl.openConnection();
@@ -58,8 +56,6 @@ public class IpAddressUtil {
                     "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
             // 建立实际的连接
             connection.connect();
-            // 获取所有响应头字段
-            Map<String, List<String>> map = connection.getHeaderFields();
 
             // 定义 BufferedReader输入流来读取URL的响应
             in = new BufferedReader(new InputStreamReader(
@@ -69,7 +65,7 @@ public class IpAddressUtil {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
+            log.info("发送get请求失败");
             e.printStackTrace();
         }
         // 使用finally块来关闭输入流
